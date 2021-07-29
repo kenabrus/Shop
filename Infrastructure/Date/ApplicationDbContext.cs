@@ -1,3 +1,4 @@
+using Core.Entities;
 using Core.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -11,6 +12,11 @@ public class ApplicationDbContext : IdentityDbContext<AppUser, AppRole, string, 
             : base(options)
         {
         }
+
+        public DbSet<ProductBrand> ProductBrands {get; set;}
+        public DbSet<ProductType> ProductTypes {get; set; }
+
+        public DbSet<Product> Producs {get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
