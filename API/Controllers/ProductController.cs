@@ -9,7 +9,7 @@ namespace API.Controllers
         {
 
         }
-
+        [Http.Get]
         public IEnumerable<Product> Products()
         {
             return new List<Product>();
