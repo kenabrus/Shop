@@ -13,7 +13,14 @@ public class ApplicationDbContext : IdentityDbContext<AppUser, AppRole, string, 
         {
         }
 
+<<<<<<< HEAD
         public DbSet<Product> Products {get; set;}
+=======
+        public DbSet<ProductBrand> ProductBrands {get; set;}
+        public DbSet<ProductType> ProductTypes {get; set; }
+
+        public DbSet<Product> Producs {get; set;}
+>>>>>>> test
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
