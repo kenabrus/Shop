@@ -1,10 +1,6 @@
 namespace Core.Entities
 {
     public class Product : BaseEntity
-<<<<<<< HEAD
-    {
-        public string Name { get; set;}
-=======
     {   
         public string Name { get; set; }
 
@@ -25,6 +21,5 @@ namespace Core.Entities
         public string Colour { get; set; }
         public string Material { get; set; }
         public string Dimensions { get; set; }
->>>>>>> test
     }
 }

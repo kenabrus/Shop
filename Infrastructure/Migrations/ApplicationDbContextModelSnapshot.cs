@@ -166,8 +166,6 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-<<<<<<< HEAD
-=======
                     b.Property<string>("Colour")
                         .HasColumnType("TEXT");
 
@@ -230,7 +228,6 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
->>>>>>> test
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
