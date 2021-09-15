@@ -56,13 +56,13 @@ namespace API.Controllers
             };
         }
 
-        [HttpGet("emailexists")]
+        [HttpGet("EmailExists")]
         public async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery] string email)
         {
             return await _userManager.FindByEmailAsync(email) != null;
         }
 
-        [HttpGet("address")]
+        [HttpGet("Address")]
         [Authorize]
         public async Task<ActionResult<AddressDto>> GetUserAddress()
         {
@@ -72,7 +72,7 @@ namespace API.Controllers
         }
 
         [Authorize]
-        [HttpPut("address")]
+        [HttpPut("Address")]
         public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto address)
         {
             var user = await _userManager.FindByEmailWithAddressAsync(HttpContext.User);
@@ -87,7 +87,7 @@ namespace API.Controllers
             return BadRequest("Problem in updating User");
         }
 
-        [HttpPost("login")]
+        [HttpPost("Login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
             var user = await _userManager.FindByEmailAsync(loginDto.Email);
@@ -119,7 +119,7 @@ namespace API.Controllers
             };
         }
 
-        [HttpPost("register")]
+        [HttpPost("Register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
             if(CheckEmailExistsAsync(registerDto.Email).Result.Value)
