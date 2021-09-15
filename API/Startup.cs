@@ -73,11 +73,11 @@ namespace API
             }
 
             //app.UseHttpsRedirection();
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, @"Content")),
-                RequestPath = "/Content"
-            });
+            // app.UseStaticFiles(new StaticFileOptions
+            // {
+            //     FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, @"Content")),
+            //     RequestPath = "/Content"
+            // });
 
 
 
