@@ -33,7 +33,7 @@ namespace API.Controllers
         }
 
         [HttpGet("GetUsers")]
-        // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<ApiResponse> GetUsers()
         {
             var editUsersDto = new List<EditUserDto>();

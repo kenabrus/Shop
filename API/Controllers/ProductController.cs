@@ -15,7 +15,7 @@ namespace API.Controllers
         {
 
         }
-        [HttpGet("GetUsers")]
+        [HttpGet("GetProducts")]
         public IEnumerable<Product> Products()
         {
             return new List<Product>()
