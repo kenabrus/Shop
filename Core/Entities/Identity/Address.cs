@@ -2,9 +2,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Core.Entities.Identity
 {
-    public class Address
+    public class Address : BaseEntity
     {
-        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Street { get; set; }
