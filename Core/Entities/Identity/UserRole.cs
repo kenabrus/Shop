@@ -2,13 +2,13 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Core.Entities.Identity
 {
-    public class UserRole : IdentityUserRole<string>
+    public class UserRole : IdentityUserRole<int>
     {
-        public override string UserId { get; set; }
+        public override int UserId { get; set; }
 
         //public ApplicationUser User { get; set; }
 
-        public override string RoleId { get; set; }
+        public override int RoleId { get; set; }
 
         //public ApplicationRole Role { get; set; }
     }

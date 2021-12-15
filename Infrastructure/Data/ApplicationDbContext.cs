@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
-public class ApplicationDbContext : IdentityDbContext<AppUser, AppRole, string, IdentityUserClaim<string>, UserRole, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
+public class ApplicationDbContext : IdentityDbContext<AppUser, AppRole, int, IdentityUserClaim<int>, UserRole, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -16,7 +16,7 @@ public class ApplicationDbContext : IdentityDbContext<AppUser, AppRole, string, 
         public DbSet<ProductBrand> ProductBrands {get; set;}
         public DbSet<ProductType> ProductTypes {get; set; }
 
-        public DbSet<Product> Producs {get; set;}
+        public DbSet<Product> Products {get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -39,25 +39,25 @@ public class ApplicationDbContext : IdentityDbContext<AppUser, AppRole, string, 
                  entity.HasKey(key => new { key.UserId, key.RoleId });
              });
 
-            builder.Entity<IdentityUserClaim<string>>(entity =>
+            builder.Entity<IdentityUserClaim<int>>(entity =>
             {
                 entity.ToTable("UserClaim");
             });
 
-            builder.Entity<IdentityUserLogin<string>>(entity =>
+            builder.Entity<IdentityUserLogin<int>>(entity =>
             {
                 entity.ToTable("UserLogin");
                  //in case you chagned the TKey type
                  //  entity.HasKey(key => new { key.ProviderKey, key.LoginProvider });       
              });
 
-            builder.Entity<IdentityRoleClaim<string>>(entity =>
+            builder.Entity<IdentityRoleClaim<int>>(entity =>
             {
                 entity.ToTable("RoleClaim");
 
             });
 
-            builder.Entity<IdentityUserToken<string>>(entity =>
+            builder.Entity<IdentityUserToken<int>>(entity =>
             {
                 entity.ToTable("UserToken");
                  //in case you chagned the TKey type

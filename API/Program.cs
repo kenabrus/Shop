@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Infrastructure.Data;
+//using Infrastructure.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -38,7 +39,7 @@ namespace API
                     var serviceProvider = services.GetRequiredService<IServiceProvider>();
                     var configuration = services.GetRequiredService<IConfiguration>();
                     // InitializeUsersAndRoles.InitializeAsync(serviceProvider, configuration).Wait();
-                    ApplicationDbContextSeed.SeedUsers(serviceProvider, configuration).Wait();
+                    ApplicationDbContextSeed.Seed(serviceProvider, configuration, loggerFactory).Wait();
 
                 }
                 catch(Exception e)

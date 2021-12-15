@@ -3,9 +3,8 @@ using System.Collections;
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interfaces;
-using Infrastructure.Data;
 
-namespace Infrastructure.Date
+namespace Infrastructure.Data
 {
     public class UnitOfWork : IUnitOfWork
     {

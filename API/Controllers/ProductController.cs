@@ -20,9 +20,9 @@ namespace API.Controllers
         {
             return new List<Product>()
             {
-                new Product(){Id = new Guid(), Name = "Jack" },
-                new Product(){Id = new Guid(), Name = "Paul" },
-                new Product(){Id = new Guid(), Name = "Olaf" }
+                new Product(){Id = 1, Name = "Jack" },
+                new Product(){Id = 2, Name = "Paul" },
+                new Product(){Id = 3, Name = "Olaf" }
             };
         }
     }

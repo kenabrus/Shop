@@ -37,9 +37,9 @@ namespace API
             services.AddAutoMapper(typeof(MappingProfiles));    
             services.AddControllers();
             services.AddDbContext<ApplicationDbContext>(x =>
-                //  x.UseSqlServer(_config.GetConnectionString("MsSqlDefaultConnection"),
-                // b => b.MigrationsAssembly("Infrastructure")));
-                x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
+                 x.UseSqlServer(_config.GetConnectionString("MsSqlDefaultConnection"),
+                b => b.MigrationsAssembly("Infrastructure")));
+                // x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
 
             services.AddApplicationServices();
             services.AddIdentityServices(_config);
