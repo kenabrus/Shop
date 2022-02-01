@@ -11,6 +11,8 @@ namespace API.Extensions
         {
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
             return services;
         }
         

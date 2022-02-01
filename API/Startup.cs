@@ -39,7 +39,7 @@ namespace API
             services.AddDbContext<ApplicationDbContext>(x =>
                  x.UseSqlServer(_config.GetConnectionString("MsSqlDefaultConnection"),
                 b => b.MigrationsAssembly("Infrastructure")));
-                // x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
+                //  x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
 
             services.AddApplicationServices();
             services.AddIdentityServices(_config);
@@ -78,7 +78,11 @@ namespace API
             //     FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, @"Content")),
             //     RequestPath = "/Content"
             // });
-
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, @"Content")),
+                RequestPath = "/Content"
+            });
 
 
             app.UseRouting();

@@ -1,0 +1,2 @@
+dotnet ef migrations add InitDb --startup-project ./../Api
+dotnet ef database update --startup-project ./../Api

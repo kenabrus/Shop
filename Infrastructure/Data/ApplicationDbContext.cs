@@ -1,8 +1,13 @@
+using System;
+using System.Linq;
+using System.Reflection;
 using Core.Entities;
 using Core.Entities.Identity;
+using Infrastructure.Data.Config;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Data
 {
@@ -64,6 +69,29 @@ public class ApplicationDbContext : IdentityDbContext<AppUser, AppRole, int, Ide
                  // entity.HasKey(key => new { key.UserId, key.LoginProvider, key.Name });
 
              });
+
+            builder.ApplyConfiguration(new ProductConfiguration());
+
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            if(Database.ProviderName == "Microsoft.EntityFrameworkCore.Sqlite")
+            {
+                foreach( var entityType in builder.Model.GetEntityTypes())
+                {
+                    var properties = entityType.ClrType.GetProperties().Where(p => p.PropertyType == typeof(decimal));
+                    var dateTimeProperties = entityType.ClrType.GetProperties().Where(x => x.PropertyType == typeof(DateTimeOffset));
+
+                    foreach(var property in properties)
+                    {
+                        builder.Entity(entityType.Name).Property(property.Name).HasConversion<double>();
+                    }
+
+                    foreach(var property in dateTimeProperties)
+                    {
+                        builder.Entity(entityType.Name).Property(property.Name).HasConversion(new DateTimeOffsetToBinaryConverter());
+                    }
+                }
+            }
         }
     }
 }

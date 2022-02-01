@@ -6,24 +6,55 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
+using System.Threading.Tasks;
+using System.IO;
+using System.Net.Http.Headers;
+using Core.Interfaces;
 
 namespace API.Controllers
 {
     public class ProductController : BaseApiController
     {
-        public ProductController()
+        private readonly IProductService _productService;
+        public ProductController(IProductService productService)
         {
-
+            _productService = productService;
         }
         [HttpGet("GetProducts")]
-        public IEnumerable<Product> Products()
+        public async Task<IReadOnlyList<Product>> Products()
         {
-            return new List<Product>()
+            return await _productService.GetProducts();
+        }
+
+        [HttpPost("Upload"), DisableRequestSizeLimit]
+        public async Task<IActionResult> Upload()
+        {
+            try
             {
-                new Product(){Id = 1, Name = "Jack" },
-                new Product(){Id = 2, Name = "Paul" },
-                new Product(){Id = 3, Name = "Olaf" }
-            };
+                var file = Request.Form.Files[0];
+                var folderName = Path.Combine("Content", "Images", "products");
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+                if (file.Length > 0)
+                {
+                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var fullPath = Path.Combine(pathToSave, fileName);
+                    var dbPath = Path.Combine(folderName, fileName);
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                    return Ok(new { dbPath });
+                    
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
         }
     }
 }
