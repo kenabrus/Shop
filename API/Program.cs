@@ -56,6 +56,13 @@ namespace API
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                    {
+                        var env = hostingContext.HostingEnvironment;
+                        config.AddJsonFile("appsettings.json", true, true)
+                        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true);
+                        config.AddEnvironmentVariables();
+                    });
                     webBuilder.UseStartup<Startup>();
                 });
     }

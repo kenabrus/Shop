@@ -1,0 +1,7 @@
+dotnet new sln --name Shop
+
+dotnet sln add ".\Core\Core.csproj"
+dotnet sln add ".\Infrastructure\Infrastructure.csproj"
+dotnet sln add ".\API\API.csproj"
+
+dotnet new gitignore
