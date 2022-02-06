@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "5cafacd6-5269-4fe2-845f-d752b4b54cad": {
+      "ProjectGuid": "5cafacd6-5269-4fe2-845f-d752b4b54cad",
+      "DisplayName": "Solution Items",
+      "ColorIndex": 0
+    },
+    "678a6214-c463-471d-b644-53ca2744836e": {
+      "ProjectGuid": "678a6214-c463-471d-b644-53ca2744836e",
+      "DisplayName": "API",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Różne pliki",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}
